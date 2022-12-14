@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавить книгу</title>
+</head>
+<body>
+
+<div style="text-align: center" class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <h1>
+                    <a class="nav-item nav-link" th:href="@{/person}">Пользователи</a>
+                    &nbsp &nbsp &nbsp
+                    <a class="nav-item nav-link" th:href="@{/book}">Книги</a>
+                </h1>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div style="text-align: center">
+    <form th:method="POST" th:action="@{/book}" th:object="${book}">
+        <br>
+        <br>
+        <h2>
+            <label for="name">Введите название книги</label>
+            <input type="text" th:field="*{name}" id="name">
+            <div style="color: darksalmon" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+            <br><br>
+            <label for="author">Введите автора</label>
+            <input type="text" th:field="*{author}" id="author">
+            <div style="color: darksalmon" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author error
+            </div>
+            <br><br>
+            <label for="year">Введите год</label>
+            <input type="text" th:field="*{year}" id="year">
+            <div style="color: darksalmon" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year error</div>
+        </h2>
+
+        <br>
+        <br>
+        <input type="submit" value="Добавить!"/>
+    </form>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Person</title>
+</head>
+<body style="text-align: center">
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <h1>
+                    <a class="nav-item nav-link" th:href="@{/person}">Пользователи</a>
+                    &nbsp &nbsp &nbsp
+                    <a class="nav-item nav-link" th:href="@{/book}">Книги</a>
+                </h1>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<h2>
+<div
+    th:each="pers : ${person}">
+    <a th:href="@{/person/{id}(id=${pers.getPerson_id()})}"
+       th:text="${pers.getName() + ',&nbsp'+ pers.getAge() + 'г.'}">user</a>
+</div>
+</h2>
+<br>
+<hr/>
+
+<h1>
+    <a href="/person/new">Добавить человека</a>
+</h1>
+</body>
+</html>
